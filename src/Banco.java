@@ -4,11 +4,11 @@ import java.util.concurrent.locks.ReentrantLock;
 
 // Instituição financeira que gerencia transferências entre contas
 class Banco {
-    private Lock lock = new ReentrantLock(); // Instância de Lock
+    private Lock trava = new ReentrantLock(); // Instância de Lock
 
     // Função para transferir dinheiro entre contas
     public synchronized void transferencia(Conta contaOrigem, Conta contaDestino, double valorTransferencia) {
-        lock.lock();
+        trava.lock();
         try {
 
             // Verifica se a conta de origem possui saldo suficiente para a transferência
@@ -23,7 +23,7 @@ class Banco {
                 System.out.println("Saldo insuficiente para realizar a transferência de " + contaOrigem + " para " + contaDestino);
             }
         } finally {
-            lock.unlock();
+            trava.unlock();
         }
     }
 }

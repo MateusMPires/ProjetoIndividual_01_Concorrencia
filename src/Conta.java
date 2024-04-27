@@ -5,7 +5,7 @@ import java.util.concurrent.locks.ReentrantLock;
 class Conta {
 
     private double saldo; // Saldo da conta
-    private Lock lock = new ReentrantLock(); // Instância de Lock
+    private Lock trava = new ReentrantLock(); // Instância de Lock
 
     // Construtor
     public Conta(double saldoInicial) {
@@ -19,21 +19,32 @@ class Conta {
 
     // Função para retirar dinheiro da Conta
     public void sacar(double valorDeSaque) {
-        lock.lock(); // Bloqueia o acesso à conta
+        trava.lock(); // Bloqueia o acesso à conta
         try {
             saldo -= valorDeSaque;
         } finally {
-            lock.unlock(); // Desbloqueando acesso à conta
+            trava.unlock(); // Desbloqueando acesso à conta
         }
     }
 
     // Função de adicionar um valor na Conta
     public void depositar(double valorDeDeposito) {
-        lock.lock(); // Bloqueia o acesso à conta
+        trava.lock(); // Bloqueia o acesso à conta
         try {
             saldo += valorDeDeposito;
         } finally {
-            lock.unlock(); // Desbloqueando acesso à conta
+            trava.unlock(); // Desbloqueando acesso à conta
+        }
+    }
+
+    // Função de transferir um valor para outra conta
+    public void transferir(Conta destino, double valor) {
+        trava.lock();
+        try {
+            sacar(valor);
+            destino.depositar(valor);
+        } finally {
+            trava.unlock();
         }
     }
 }
