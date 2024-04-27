@@ -18,9 +18,9 @@ class Banco {
                 contaOrigem.sacar(valorTransferencia); // Retirar o valor da conta de origem
                 contaDestino.depositar(valorTransferencia); // Depositar o valor na conta de destino
 
-                System.out.println("Transferência de R$" + valorTransferencia + " realizada de " + contaOrigem + " para " + contaDestino);
+                System.out.println("Transferência de R$" + valorTransferencia + " feita de " + contaOrigem + " para " + contaDestino);
             } else {
-                System.out.println("Saldo insuficiente para realizar a transferência de " + contaOrigem + " para " + contaDestino);
+                System.out.println("Saldo não suficiente para fazer a transferência de " + contaOrigem + " para " + contaDestino);
             }
         } finally {
             trava.unlock();

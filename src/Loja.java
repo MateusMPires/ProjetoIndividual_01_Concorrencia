@@ -33,7 +33,7 @@ class Loja {
             funcionarios[1] = temp;
         } else {
             // Caso a loja não tenha saldo suficiente, exibe uma mensagem de aviso
-            System.out.println("A loja não possui saldo suficiente para pagar os salários dos funcionários.");
+            System.out.println("A loja não possui saldo suficiente para pagar os salários.");
         }
     }
 

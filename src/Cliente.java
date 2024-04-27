@@ -20,11 +20,6 @@ class Cliente extends Thread {
         this.banco = banco;
     }
 
-    // Função que obtém a conta do cliente
-    public Conta getContaCliente() {
-        return contaCliente;
-    }
-
     // Função principal que é executado quando a thread do cliente é iniciada
     public void run() {
         // Loop enquanto o cliente tiver saldo na conta
@@ -57,7 +52,7 @@ class Cliente extends Thread {
             System.out.println(Thread.currentThread().getName() + " realizou uma compra de R$" + valor + ".");
         } else {
             // Exibe uma mensagem se o cliente não tiver saldo suficiente para a compra
-            System.out.println(Thread.currentThread().getName() + " não possui saldo suficiente para realizar a compra de R$" + valor + ".");
+            System.out.println(Thread.currentThread().getName() + " não possui saldo para fazer a compra de R$" + valor + ".");
         }
     }
 
